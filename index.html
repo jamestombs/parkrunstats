@@ -1,0 +1,224 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Tilgate stats</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+  <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+  <div class="container">
+
+    <h1 class="text-center">Tilgate stats</h1>
+    <h2 class="text-center">Welcome to the Tilgate parkrun stat hub! Find out the stats on your favourite #tilgreatparkrun</h2>
+
+    <div class="row">
+
+      <div class="col-md-4 col-lg-3">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">Register</h5>
+            <a href="https://www.parkrun.org.uk/register/" target="_blank" class="btn btn-primary">Register</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-lg-6">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">Latest Results</h5>
+            <a href="https://www.parkrun.org.uk/tilgate/results/latestresults/" class="btn btn-primary">View results</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-lg-3">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">Latest news</h5>
+            <a href="https://www.parkrun.org.uk/tilgate/news/" class="btn btn-primary">View news</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="run-stats-wrapper banner">
+
+      <h2 class="text-center">Run stats</h2>
+      <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <div class="run-stat" data-type="totalrunners">
+            <h3>Runs completed</h3>
+            <span></span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <div class="run-stat" data-type="volunteersengaged">
+            <h3>Volunteers Engaged</h3>
+            <span></span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <div class="run-stat" data-type="volunteerslots">
+            <h3>Volunteer slots</h3>
+            <span></span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <div class="run-stat" data-type="pbs">
+            <h3>PB's Earned</h3>
+            <span></span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <div class="run-stat" data-type="tourists">
+            <h3>New Tourists</h3>
+            <span></span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <div class="run-stat" data-type="newbies">
+            <h3>Newbies</h3>
+            <span></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-4 text-center">
+        <h2>Attendance</h2>
+        <div class="icon-wrapper">
+          <div data-donutty data-circle="false" data-value="483" data-max="721" data-thickness="30" data-radius="80" data-round="false" data-color="#A8FF00"></div>
+        </div>
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <th>Highest attendance<span data-type="highestAttendenceDate"></span></th>
+              <td><span data-type="highestAttendence"></span></td>
+            </tr>
+            <tr>
+              <th>Last weekend<span data-type="lastWeekendDate"></span></th>
+              <td><span data-type="lastWeekendAttendence"></span></td>
+            </tr>
+            <tr>
+              <th><span data-type="year" class="no-style"></span> average</th>
+              <td><span data-type="yearlyAverage"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-lg-4 text-center">
+        <h2>Personal Bests</h2>
+        <div class="icon-wrapper">
+          <i class="fas fa-medal fa-9x"></i>
+        </div>
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <th>Men</th><td>10</td>
+            </tr>
+            <tr>
+              <th>Women</th><td>12</td>
+            </tr>
+            <tr>
+              <th>Total</th><td>22</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-lg-4 text-center">
+        <h2>Top Performers</h2>
+        <div class="icon-wrapper">
+          <i class="fas fa-trophy fa-9x"></i>
+        </div>
+        <table class="table table-striped">
+          <tbody>
+            <tr><th>1.</th><td><span data-prid="1319012">Sue GARNER</span></td><td>VW70-74</td><td>86.58%</td></tr>
+            <tr><th>2.</th><td><span data-prid="1633422">David BULL</span></td><td>VM35-39</td><td>78.27%</td></tr>
+            <tr><th>3.</th><td><span data-prid="121825">David BARNES</span></td><td>VM60-64</td><td>77.25%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="banner" style="background: #a1dfef;">
+      <div class="row">
+        <div class="col-lg-6">
+          <h2 class="text-center">Runners/Volunteers</h2>
+          <div class="venn-wrapper text-center">
+            <span class="fa-layers" style="font-size: 300px;">
+              <i class="fa fa-circle" style="opacity: 0.9; color: red;" data-fa-transform="shrink-2 left-4"></i>
+              <i class="fa fa-circle" style="opacity: 0.7; color: blue;" data-fa-transform="shrink-2 right-4"></i>
+              <span class="fa-layers-text fa-inverse" data-fa-transform="shrink-14 left-6" data-type="volunteer-count">50</span>
+              <span class="fa-layers-text fa-inverse" data-fa-transform="shrink-14 right-6" data-type="runners-count">500</span>
+              <span class="fa-layers-text fa-inverse" data-fa-transform="shrink-14" data-type="volunteerandvolunteer-count">10</span>
+              <span class="fa-layers-text fa-inverse" data-fa-transform="shrink-15 left-6 down-2">Volunteer</span>
+              <span class="fa-layers-text fa-inverse" data-fa-transform="shrink-15 right-6 down-2">Run</span>
+              <span class="fa-layers-text fa-inverse" data-fa-transform="shrink-15 down-2">Both</span>
+            </span>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h2 class="text-center">Age Group Breakdown</h2>
+          <canvas class="agebreakdown" id="agebreakdown"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <h2>Biggest Improvers</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr><th>Name</th><th>Age Category</th><th>Time</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span data-prid="3317649">Andrew LONGLEY</span></td><td>VM50-54</td><td>31:59 <span class="badge badge-success">-1:09</span></td></tr>
+            <tr><td><span data-prid="3049265">Lily WARRINER</span></td><td>JW11-14</td><td>32:21 <span class="badge badge-success">-0:58</span></td></tr>
+            <tr><td><span data-prid="3650245">Emma SELWOOD</span></td><td>VW45-49</td><td>34:07 <span class="badge badge-success">-0:34</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-lg-6">
+        <h2>New Milestones</h2>
+        <div id="milestones"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="js/vendor/modernizr-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
+    <!--<script src="js/vendor/bootstrap.min.js"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js" integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis=" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+  <script src="js/vendor/donutty-jquery.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
