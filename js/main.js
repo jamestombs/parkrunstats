@@ -1,11 +1,11 @@
 
 $(document).ready(function() {
     // Set up attendance graph
-    $.get('https://raw.githubusercontent.com/jamestombs/parkrunstats/master/attendence.json', function(data) {
+    $.get('https://raw.githubusercontent.com/jamestombs/parkrunstats/master/allStats.json', function(data) {
         const attendance = $("#attendance").donutty({
             min: 0,
-            max: data.highestAttendence,
-            value: data.lastWeekendAttendence,
+            max: data.Attendance.highestAttendance,
+            value: data.lastWeekendAttendance,
             circle: false,
             round: false,
             radius: 100,
@@ -13,44 +13,47 @@ $(document).ready(function() {
         });
 
         // Update table
-        $('span[data-type="highestAttendenceDate"]').html(data.highestAttendenceDate.dayOfMonth +'/'+ data.highestAttendenceDate.monthValue +'/'+ data.highestAttendenceDate.year);
-        $('span[data-type="highestAttendence"]').html(data.highestAttendence);
-        $('span[data-type="lastWeekendDate"]').html(data.lastWeekendDate.dayOfMonth +'/'+ data.lastWeekendDate.monthValue +'/'+ data.lastWeekendDate.year);
-        $('span[data-type="lastWeekendAttendence"]').html(data.lastWeekendAttendence);
-        $('span[data-type="year"]').html(data.year);
-        $('span[data-type="yearlyAverage"]').html(data.yearlyAverage);
+        $('span[data-type="highestAttendenceDate"]').html(data.Attendance.highestAttendanceDate.dayOfMonth +'/'+ data.Attendance.highestAttendanceDate.monthValue +'/'+ data.Attendance.highestAttendanceDate.year);
+        $('span[data-type="highestAttendence"]').html(data.Attendance.highestAttendance);
+        $('span[data-type="lastWeekendDate"]').html(data.Attendance.lastWeekendDate.dayOfMonth +'/'+ data.Attendance.lastWeekendDate.monthValue +'/'+ data.Attendance.lastWeekendDate.year);
+        $('span[data-type="lastWeekendAttendence"]').html(data.Attendance.lastWeekendAttendance);
+        $('span[data-type="year"]').html(data.Attendance.year);
+        $('span[data-type="yearlyAverage"]').html(data.Attendance.yearlyAverage);
+
+        update_stat_blocks(data.RunStatsLast);
+
+        update_milestones(data.Milestoners);
+
+        update_gender_stats(data.GenderStatsLast);
     }, 'json');
 
     // Update run stats and set height for blocks
-    function update_stat_blocks() {
-        $.get('https://raw.githubusercontent.com/jamestombs/parkrunstats/master/runStatsLast.json', function(data) {
-            // total runners
-            $('.run-stat[data-type="totalrunners"] span').append(data.runsCompleted);
-            // Volunteers
-            $('.run-stat[data-type="volunteersengaged"] span').append(data.volunteersEngaged);
-            // Vol slots
-            $('.run-stat[data-type="volunteerslots"] span').append(data.volunteerSlots);
-            // PBs
-            $('.run-stat[data-type="pbs"] span').append(data.pbs);
-            // Tourists
-            $('.run-stat[data-type="tourists"] span').append(data.newTourists);
-            // Newbies
-            $('.run-stat[data-type="newbies"] span').append(data.newbies);
+    function update_stat_blocks(data) {
+        // total runners
+        $('.run-stat[data-type="totalrunners"] span').append(data.runsCompleted);
+        // Volunteers
+        $('.run-stat[data-type="volunteersengaged"] span').append(data.volunteersEngaged);
+        // Vol slots
+        $('.run-stat[data-type="volunteerslots"] span').append(data.volunteerSlots);
+        // PBs
+        $('.run-stat[data-type="pbs"] span').append(data.pbs);
+        // Tourists
+        $('.run-stat[data-type="tourists"] span').append(data.newTourists);
+        // Newbies
+        $('.run-stat[data-type="newbies"] span').append(data.newbies);
 
-            var statblockheight = 0;
-            $('.run-stat').each(function() {
-                var type = $(this).data('type');
-                var item = data[type];
-                $(this).find('span').html(item);
-                var thisheight = $(this).find('h3').height();
-                if (thisheight > statblockheight) {
-                    statblockheight = thisheight;
-                }
-            });
-            $('.run-stat h3').height(statblockheight);
-        }, 'json');
+        var statblockheight = 0;
+        $('.run-stat').each(function() {
+            var type = $(this).data('type');
+            var item = data[type];
+            $(this).find('span').html(item);
+            var thisheight = $(this).find('h3').height();
+            if (thisheight > statblockheight) {
+                statblockheight = thisheight;
+            }
+        });
+        $('.run-stat h3').height(statblockheight);
     }
-    update_stat_blocks();
 
     function getDummyData(starter) {
         return [
@@ -121,7 +124,7 @@ $(document).ready(function() {
         }
     });
 
-    $.get('https://raw.githubusercontent.com/jamestombs/parkrunstats/master/milestones.json', function(data) {
+    function update_milestones(data) {
         if (data.milestones.length > 0) {
             var $table = $('<table></table>').addClass('table table-striped').append($('<thead><tr><th>Name</th><th>Milestone</th></tr></thead>'));
             var $tbody = $('<tbody></tbody');
@@ -133,7 +136,7 @@ $(document).ready(function() {
             $table.append($tbody);
             $("#milestones").append($table);
         }
-    }, 'json');
+    }
 
     function get_shirt(milestone) {
         var layerclass = 'fa-layers-text';
@@ -142,5 +145,16 @@ $(document).ready(function() {
         }
         var $wrapper = $('<span></span>').addClass('fa-layers fa-fw milestone-'+ milestone).append($('<i></i>').addClass('fas fa-tshirt fa-2x')).append($('<span></span>').html(milestone).addClass(layerclass).attr('data-fa-transform', 'shrink-3 right-9'));
         return $wrapper;
+    }
+
+    function update_gender_stats(data) {
+        $('td[data-type="malerunners"]').html(format_num_percentage(data.maleRunners, data.maleRunnerPercentage));
+        $('td[data-type="femalerunners"]').html(format_num_percentage(data.femaleRunners, data.femaleRunnerPercentage));
+        $('td[data-type="malevols"]').html(format_num_percentage(data.maleVolunteers, data.maleVolunteersPercentage));
+        $('td[data-type="femalevols"]').html(format_num_percentage(data.femaleVolunteers, data.femaleVolunteersPercentage));
+    }
+
+    function format_num_percentage(num, per) {
+        return num +' ('+ Math.round(per * 100) +'%)';
     }
 });
